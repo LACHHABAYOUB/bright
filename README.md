@@ -6,7 +6,6 @@ FollwersReactSpringApp is Full Stack App
 
 App Build with Spring Framework as Back-End And React as Front-End .
 
-![ezgif-2-3e90a557c282](https://user-images.githubusercontent.com/44031876/127566693-b3eaa542-3422-4703-a45c-e463116e8dc9.gif)
 
 
 
