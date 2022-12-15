@@ -69,27 +69,4 @@ https://www.mysql.com/downloads/
     
 ```
 
-4 Project owner
-
-```sh
-
-Ayoub Lachhab    
-
-```
-
-5 Demonstration of the application
-```sh
-https://youtu.be/gOrylNP5_Vg
-```
-
-6 Duration of work
-
-```sh
-1 day
-```
-
-8 Copyrights
-```sh
-Copyrights Maharishi international university ©2021 All Rights Reserved
-```
 
