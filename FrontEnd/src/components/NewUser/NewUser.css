@@ -1,6 +1,6 @@
 .NewUser {
     width: 50%;
-    margin: 20px auto;
+    margin: 50px auto;
     border: 1px solid rgb(100, 100, 100);
     box-shadow: 0 2px 3px #ccc;
     text-align: center;
@@ -31,11 +31,13 @@
     margin: 5px 0;
     padding: 10px;
     font: inherit;
-    border: 1px solid #fa923f;
     background-color: transparent;
-    color: #fa923f;
+    color: white;
     cursor: pointer;
+    margin: 20px auto;
     border-radius: 25px;
+    background-color: #fa923f;
+    width: 200px;
 }
 
 .NewUser button:hover,
