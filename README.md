@@ -80,6 +80,8 @@ For Authentication we have 2 options in AAD:
 We need to use Microsoft Azure AD libraries and they open source
 
 
+https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-upgrade-preview-authentication-agents
+
 
 ```
 
