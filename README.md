@@ -69,4 +69,18 @@ https://www.mysql.com/downloads/
     
 ```
 
+4 notes
+
+```sh
+
+For Authentication we have 2 options in AAD:
+1. SAML based: in this process 2 basic URLs are required from application team(Entity/identifier URL and Reply/Assertion URL).Once URLs configured in AAD, 3URLs(Identifier, Log-in and logout) will be shared that need to be configured in application. Authentication parameter passed for verification between app and AAD will be email.
+2. OAuth: Application need to share reply URLs. AAD will share the information(client id, certificate, tenant id, Oauth token endpoint/metadata) required by app team that need to be configured in app.
+
+We need to use Microsoft Azure AD libraries and they open source
+
+
+
+```
+
 
