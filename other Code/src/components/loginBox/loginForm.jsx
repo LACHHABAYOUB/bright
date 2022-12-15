@@ -73,6 +73,8 @@ export const LoginForm = () => {
     }
   };
 
+  cx
+
   const verifyAccount = async (props) => {
     if (emailValue) {
       // Check that password is 'dummy'

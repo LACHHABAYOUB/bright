@@ -90,7 +90,7 @@ const Blog = (props) => {
                         <Route path="/posts" component={Posts}  />
                         <Route path="/users" component={Users} />
                         <Route path="/newcomponent" component={NewComponent} />
-                        <Redirect from="/" to="/posts" />
+                        <Redirect from="/" to="/SignIn" />
 
                     </Switch>
 
