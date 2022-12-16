@@ -1,0 +1,522 @@
+{
+	"info": {
+		"_postman_id": "e0ca4092-3b7a-4a54-b3d7-334c6d53b72e",
+		"name": "CSS-Data API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18954530"
+	},
+	"item": [
+		{
+			"name": "BaseURL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTableData: PLAID_LOG",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"table_name\": \"plaid_log\",\r\n    \"columns\": \"TIME_STAMP,UCID,ENTRY_TYPE,ELAPSED_MILLISECONDS,STATUS_CODE,ADDITIONAL_INFORMATION\",\r\n    \"num_rows\": 1000\r\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getTableData",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getTableData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTableData: APPLICATION_LOG",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"table_name\": \"APPLICATION_LOG\",\r\n    \"columns\": \"HOST_NAME,ENTRY_TYPE,MESSAGE,CONTEXT_INFORMATION,STACK_TRACE,TIME_STAMP\",\r\n    \"num_rows\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getTableData",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getTableData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTableData: GENESYS_INTENT_GROUP",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"table_name\": \"GENESYS_INTENT_GROUP\",\r\n    \"columns\": \"INTENT_GROUP,INTENT_GROUP,ROUTE_INTENT,ROUTE_INTENT_DESC\",\r\n    \"num_rows\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getTableData",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getTableData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "runStatement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sql_statement\": \"select * from holiday\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/runStatement",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"runStatement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Holiday",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"holiday_date\": \"2022/2/15\",\r\n    \"description\": \"Birthday TEST\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/saveHoliday",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"saveHoliday"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save CCHours",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"call_center_code\": \"SC_ENS_SPAN_BUS\",\r\n        \"time_zone\": \"C\",\r\n        \"state_group\": \"DEFAULT_TEST_11\",\r\n        \"open_weekday\": \"08:00\",\r\n        \"closed_weekday\": \"18:00\",\r\n        \"open_saturday\": \"00:00\",\r\n        \"closed_saturday\": \"00:00\",\r\n        \"open_sunday\": \"00:00\",\r\n        \"closed_sunday\": \"00:00\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/saveCCHours",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"saveCCHours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save GRTable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"intent_group\": \"Billing_TEST_69\",\r\n        \"segment_code\": \"BDXX_69\",\r\n        \"queuename\": \"Test_test_69\",\r\n        \"skill1\": null,\r\n        \"skill2\": null,\r\n        \"skill3\": null,\r\n        \"skill4\": null,\r\n        \"skill5\": null,\r\n        \"skill6\": null,\r\n        \"skill7\": null,\r\n        \"skill8\": null,\r\n        \"skill9\": null,\r\n        \"skill10\": null,\r\n        \"skill11\": null,\r\n        \"skill12\": null,\r\n        \"skill13\": null,\r\n        \"skill14\": null,\r\n        \"skill15\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/saveGRTable",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"saveGRTable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save AuditLog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"table_name\": \"HOLIDAY\",\r\n    \"old_row_data\": \"{\\\"holiday_date\\\":\\\"2022-12-01T00:00:00.000+00:00\\\",\\\"description\\\":\\\"Birthday\\\"}\",\r\n    \"new_row_data\": \"{\\\"holiday_date\\\":\\\"2022-12-01T00:00:00.000+00:00\\\",\\\"description\\\":\\\"Birthday\\\"}\",\r\n    \"updateby\": \"firstname1.lastname1@brightspeed.com\",\r\n    \"update_date\": \"\",\r\n    \"row_key\": \"2022/12/01|Birthday\",\r\n    \"operation\": \"DELETE\",\r\n    \"environment\": \"DEV\",\r\n    \"status\": \"COMMITTED\",\r\n    \"approvedby\": \"\",\r\n    \"approved_date\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/saveAuditLog",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"saveAuditLog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Holiday",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"holidayDate\": \"2023-11-12\",\r\n        \"description\": \"TESTx1111xxx11\",\r\n        \"uniqueId\": \"2023-11-11|TESTx\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/updateHoliday",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"updateHoliday"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update CCHours",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"callCenterCode\": \"SC_ENS_SPAN_BUS\",\r\n        \"timeZone\": \"C\",\r\n        \"stateGroup\": \"DEFAULT_TEST_TEST\",\r\n        \"openWeekday\": \"08:00\",\r\n        \"closedWeekday\": \"18:00\",\r\n        \"openSaturday\": \"00:00\",\r\n        \"closedSaturday\": \"00:00\",\r\n        \"openSunday\": \"00:00\",\r\n        \"closedSunday\": \"00:00\",\r\n        \"uniqueId\": \"SC_ENS_SPAN_BUS|C|DEFAULT_TEST\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/updateCCHours",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"updateCCHours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update GRTTable",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"intent_group\": \"RPR EBD\",\r\n        \"segment_code\": \"any\",\r\n        \"queuename\": \"BRSPD_BD_TEST\",\r\n        \"skill1\": \"BRSPD_BD_DATA\",\r\n        \"skill2\": null,\r\n        \"skill3\": null,\r\n        \"skill4\": null,\r\n        \"skill5\": null,\r\n        \"skill6\": null,\r\n        \"skill7\": null,\r\n        \"skill8\": null,\r\n        \"skill9\": null,\r\n        \"skill10\": null,\r\n        \"skill11\": null,\r\n        \"skill12\": null,\r\n        \"skill13\": null,\r\n        \"skill14\": null,\r\n        \"skill15\": null,\r\n        \"uniqueId\": \"RPR EBD|any\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/updateGRTable",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"updateGRTable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Holiday",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"holiday_date\": \"2022-12-29\",\r\n    \"description\": \"TEST_TEST\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/deleteHoliday",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"deleteHoliday"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CCHours",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"callCenterCode\": \"SC_ENS_SPAN_BUS\",\r\n        \"timeZone\": \"C\",\r\n        \"stateGroup\": \"DEFAULT_TEST12\",\r\n        \"openWeekday\": \"08:00\",\r\n        \"closedWeekday\": \"18:00\",\r\n        \"openSaturday\": \"00:00\",\r\n        \"closedSaturday\": \"00:00\",\r\n        \"openSunday\": \"00:00\",\r\n        \"closedSunday\": \"00:00\",\r\n        \"uniqueId\": \"SC_ENS_SPAN_BUS|C|DEFAULT_TEST12\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/deleteCCHours",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"deleteCCHours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete GRTable",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"intent_group\": \"Billing\",\r\n        \"segment_code\": \"BDXX\",\r\n        \"queueName\": \"Test_1\",\r\n        \"skill1\": null,\r\n        \"skill2\": null,\r\n        \"skill3\": null,\r\n        \"skill4\": null,\r\n        \"skill5\": null,\r\n        \"skill6\": null,\r\n        \"skill7\": null,\r\n        \"skill8\": null,\r\n        \"skill9\": null,\r\n        \"skill10\": null,\r\n        \"skill11\": null,\r\n        \"skill12\": null,\r\n        \"skill13\": null,\r\n        \"skill14\": null,\r\n        \"skill15\": null,\r\n        \"uniqueId\": \"Billing|BDXX|Test_1\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/deleteGRTable",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"deleteGRTable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete AuditLog",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/deleteAuditLog",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"deleteAuditLog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Holidays List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getHolidayList",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getHolidayList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CC Hours List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getCCHList",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getCCHList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GRT List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getGRTList",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getGRTList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get AuditLog List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/ccs-data-api/getAuditLogList",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"ccs-data-api",
+						"getAuditLogList"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
