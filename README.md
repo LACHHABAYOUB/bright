@@ -80,6 +80,13 @@ For Authentication we have 2 options in AAD:
 We need to use Microsoft Azure AD libraries and they open source
 
 
+There are a few backend apis, I will send you the info in a few. One api is maintained for the application data , a separate one for the authentication and a separate data api. The application maintains its own user table. Give me a few I will send you info.
+
+
+
+
+
+
 https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-upgrade-preview-authentication-agents
 
 
