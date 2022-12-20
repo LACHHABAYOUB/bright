@@ -1,131 +1,91 @@
-//import axios from 'axios';
-import React, { useContext, useRef } from 'react';
-import { Redirect, useHistory, Route } from "react-router-dom";
-import './SignIn.css';
+import React, { createRef, useRef, useState } from "react";
+import {
+  Container,
+  Header,
+  Label,
+  Icon,
+  Segment,
+  Select,
+  Radio,
+  Form,
+  Button,
+} from "semantic-ui-react";
+
+import config from "./config";
+import MicrosoftLogin from "react-microsoft-login";
+
+const SignIn = () => {
+  const [msalInstance, onMsalInstanceChange] = useState();
+  const [clientId, onClientIdChange] = useState(config.client_id);
+  const [callbackUrl, onCallbackUrlChange] = useState(
+    config.callbackUrl || window.location.href
+  );
+  const [buttonTheme, onButtonThemeChange] = useState(
+    config.themeOptions[0].value
+  );
+  const [graphScopes, onGraphScopesChange] = useState([
+    config.graphScopesOptions[0].value,
+  ]);
+  const [withUserData, onWithUserDataChange] = useState(true);
+  const [customClassName, onCustomClassNameChange] = useState("my-button");
+  const [customButton, onCustomButtonChange] = useState(false);
+  const [forceRedirectStrategy, onForceRedirectStrategyChange] = useState(
+    false
+  );
+  const [debug, onDebugChange] = useState(true);
+
+  const loginHandler = (err, data, msal) => {
+    console.log(err, data);
+    if (!err && data) {
+      onMsalInstanceChange(msal);
+    }
+  };
+
+  const logoutHandler = () => {
+    msalInstance.logout();
+  };
+
+  return (
 
 
-
-const SignIn = (props) => {
-
-
-  const [errorMessage, setErrorMessage] = React.useState("");
-  const Errormesg = () => {
-    setErrorMessage("Error Credential!")
-  }
-
-    const signForm = useRef();
-    const history = useHistory();
-
-    const loginHandler = () => {
-        const form = signForm.current
-        window.sessionStorage.setItem('loginName',form['username'].value);
-       // history.go(1)
-        props.history.push('/');
-    };
+    <div className="viewport">
+      <div className="NewPost">
 
 
-    const getUserInfo = async () => {
-        axios
-          .get(baseUrl?`${baseUrl}/CcsRestService/v1/getUser/${emailValue}`:`../CcsRestService/v1/getUser/${emailValue}`)
-          .then((response) => {
-            let resp = response.data;
-            if (resp && resp !== "FAILURE") {
-              let info = resp.split(",");
-    
-              if (passwordValue === info[1] && info[1] !== "dummy") {
-                // Authenticated
-                setAuth("auth" + "|" + info[3] + "|" + info[0] + "|" + info[2] );
-                navigate("/posts");
-              } else if (info[1] === "dummy") {
-                switchToSignup();
-              } else {
-                
-                setShowFailureBadCred(true);
-                setAuth("");
-                setTimeout(function () {
-                  setShowFailureBadCred(false);
-                }, 4000); //Time before execution
-              }
-            } else {
-              setShowFailureBadCred(true);
-              setAuth("");
-              setTimeout(function () {
-                setShowFailureBadCred(false);
-              }, 4000); //Time before execution
-            }
-          });
-      };
+        <form >
 
-    const onLoginClicked = (props) => {
-        if (emailValue && passwordValue) {
-          getUserInfo();
-        } else {
-          setShowFailureEmailPass(true);
-          setTimeout(function () {
-            setShowFailureEmailPass(false);
-          }, 4000); //Time before execution
-        }
-      };
-    
-      const verifyAccount = async (props) => {
-        if (emailValue) {
-          // Check that password is 'dummy'
-          axios
-            .get(baseUrl?`${baseUrl}/CcsRestService/v1/getUser/${emailValue}`:`../CcsRestService/v1/getUser/${emailValue}`)
-            .then((response) => {
-              if (response.data !== "FAILURE") {
-                let info = response.data.split(",");
-                if (info[1] === "dummy") {
-                  switchToSignup();
-                } else {
-                  setShowFailureForgotPass(true);
-                  setTimeout(function () {
-                    setShowFailureForgotPass(false);
-                  }, 4000); //Time before execution
-                }
-              } else {
-                setShowFailureNoAcct(true);
-                setTimeout(function () {
-                  setShowFailureNoAcct(false);
-                }, 4000); //Time before execution
-              }
-            });
-        } else {
-          setShowFailureNoEmail(true);
-          setTimeout(function () {
-            setShowFailureNoEmail(false);
-          }, 4000); //Time before execution
-        }
-      };
+          <div><br /></div><h1>Welcome to BrightSpeed!</h1><div><br /></div>
+          <div><br /></div>  <div><br /></div>
+      
 
+          <Segment basic>
+            <Container text>
+              <Segment>
+                {msalInstance ? (
+                  <Button onClick={logoutHandler}>Logout</Button>
+                ) : (
+                  <MicrosoftLogin
+                    withUserData={withUserData}
+                    debug={debug}
+                    clientId={clientId}
+                    forceRedirectStrategy={forceRedirectStrategy}
+                    authCallback={loginHandler}
+                    buttonTheme={buttonTheme}
+                    className={customClassName}
+                    graphScopes={graphScopes}
+                    children={customButton && <Button>Custom button</Button>}
+                    useLocalStorageCache={true}
+                  />
+                )}
+              </Segment>
+            </Container>
+          </Segment>
+          <div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div>
+          <div><br /></div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-    return (
-        
-        
-
-        <div className="NewPost">
-                    
-
-            <form ref={signForm}>
-                
-            <div><br /></div><h1>Login</h1><div><br /></div>
-            <li><img src="https://filecache.mediaroom.com/mr5mr_century_link_2/187039/Brightspeed_Logo_Full_Color_RGB_864px%4072ppi.png" alt="example" width={150}/></li>
-            {errorMessage && <div className="error"> {errorMessage} </div>}
-
-                <label>Name</label>
-                <input type="text" id={'username'} name={'username'} placeholder="someone@brighspeed.com"/>
-
-                <label>Password</label>
-                <input type="password" id={'passoword'} name={'passoword'} placeholder="Password"/>
-                <div><br /></div>
-
-                <button  onClick={Errormesg}> <a href="/">Login</a></button> <div><br /></div>
-
-
-            </form>
-        </div>
-
-        
-    );
-}
 export default SignIn;
