@@ -119,8 +119,6 @@ const MicrosoftLogin: React.FunctionComponent<MicrosoftLoginProps> = ({
     return null;
   }
 
- 
-
   // attempt silent login
   // return msalInstance to user login handler on reload if token is present
   useEffect(() => {
