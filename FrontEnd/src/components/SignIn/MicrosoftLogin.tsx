@@ -119,20 +119,7 @@ const MicrosoftLogin: React.FunctionComponent<MicrosoftLoginProps> = ({
     return null;
   }
 
-  useEffect(() => {
-    msalInstance.handleRedirectCallback(
-      (error: AuthError, authResponse: AuthResponse) => {
-        if (!error && authResponse) {
-          log("Fetch Azure AD 'token' with redirect SUCCEEDED", authResponse);
-          log("Fetch Graph API 'access_token' in silent mode STARTED");
-          getGraphAPITokenAndUser(true);
-        } else {
-          log("Fetch Azure AD 'token' with redirect FAILED", error, true);
-          authCallback(error);
-        }
-      }
-    );
-  }, []);
+ 
 
   // attempt silent login
   // return msalInstance to user login handler on reload if token is present

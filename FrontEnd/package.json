@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@microsoft/microsoft-graph-types": "^2.25.0",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
     "react": "^17.0.2",
